@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="ODTÜ YZT" content="ODTÜ Yapay Zeka Topluluğu" />
+
+		<!-- Roboto font from Google Fonts API -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto"
+		/>
+		<!-- Material icons from Google Icons API -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		/>
+
+		<!-- Font Awesome icons -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+
+		<!-- JQuery for injecting JavaScript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+		<link rel="icon" href="./assets/favicon.ico" />
+		<link rel="apple-touch-icon" href="./assets/logo192.png" />
+		<link rel="manifest" href="./meta/manifest.json" />
+
+		<title>ODTÜ YZT</title>
+
+		<link rel="stylesheet" href="./style.css" />
+
+		<!-- Render topbar and footer on page load -->
+		<script>
+			$(function () {
+				$('.topbar-container').load('./components/topbar.html');
+				$('.footer-container').load('./components/footer.html');
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="about-container">
+			<div class="topbar-container"></div>
+			<div class="logo-container">
+				<img
+					id="main-logo"
+					alt="YZT Logo"
+					src="./assets/logo_figurlu.png"
+				/>
+				<h1 class="next-to-logo">İdari Takım ve Yönetim Kurulu</h1>
+			</div>
+			<div class="body-container">
+				<p>
+					Topluluk Yönetim Kurulu, 7 kişiden oluşmaktadır. Yönetim
+					Kurulu başkanını hariç geriye kalan 6 kişi, 3 komitede
+					ikişer kişilik eş-başkan olarak olarak görev alır.
+				</p>
+				<p>
+					İdari takım, aktif üyelerin mülakat yöntemiyle takıma dahil
+					olmaları ile oluşur. Her idari takım üyesi, görev almak
+					istediği komiteyi belirler ve o komitenin üyesi olur.
+				</p>
+				<p>
+					Tüzükte belirtildiği üzere, her öğretim yılı sonunda
+					gerçekleşecek olan yönetim kurulu seçimlerinde aday
+					olabilmek için öncelikle idari takım üyesi olmak gerekir.
+				</p>
+			</div>
+			<div class="footer-container"></div>
+		</div>
+	</body>
+</html>
