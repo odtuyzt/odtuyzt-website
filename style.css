@@ -12,9 +12,14 @@ h1 {
 	font-size: 64px;
 }
 
-p {
+h2 {
 	color: white;
 	font-size: 32px;
+}
+
+p {
+	color: white;
+	font-size: 21px;
 }
 
 .footer > h6 {
