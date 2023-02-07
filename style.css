@@ -47,6 +47,7 @@ p {
 .hero h1 {
     /* Text styles */
     font-size: 5em;
+    color: white;
     
     /* Margins */
     margin-top: 0;
