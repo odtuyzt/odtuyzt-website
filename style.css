@@ -329,6 +329,7 @@ button:hover {
 }
 
 .name {
+  color: black;
   margin-top: 20px;
   margin-right: 0px;
   margin-bottom: 5px;
@@ -338,6 +339,7 @@ button:hover {
 }
 
 .position {
+  color: black;
   margin-top: 0px;
   margin-right: 0px;
   margin-bottom: 10px;
@@ -356,7 +358,7 @@ button:hover {
 .social-icons {
   width: 70px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .team-image-wrapper {
