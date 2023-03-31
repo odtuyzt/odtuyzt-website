@@ -206,6 +206,31 @@ p {
 	justify-content: flex-end;
 }
 
+@media only screen and (max-width: 768px) {
+	.topbar {
+		flex-direction: column;
+		padding: 8px;
+		padding-right: 0;
+	}
+
+	.topbar > .navbar {
+		margin-top: 16px;
+	}
+
+	.topbar > .navbar > nav .navbar-items {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.topbar > .navbar > nav .navbar-items li {
+		margin: 8px;
+	}
+
+	.topbar > .social-buttons {
+		margin-top: 8px;
+	}
+}
+
 button {
 	font-size: 32px;
 	margin: 4px;
