@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Projelerimiz | ODTÜ Yapay Zeka Topluluğu" content="ODTÜ Yapay Zeka Topluluğu" />
+
+    <!-- Roboto font from Google Fonts API -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito" />
+    <!-- Material icons from Google Icons API -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- JQuery for injecting JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <link rel="icon" href="./assets/favicon.png" />
+    <link rel="apple-touch-icon" href="./assets/logo192.png" />
+    <link rel="manifest" href="./meta/manifest.json" />
+
+    <title>Projelerimiz | ODTÜ Yapay Zeka Topluluğu</title>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Render topbar and footer on page load -->
+    <script>
+        $(function () {
+            $('.topbar-container').load('./components/topbar.html');
+            $('.footer-container').load('./components/footer.html');
+        });
+    </script>
+
+    <!-- Add custom styles or override existing ones here -->
+    <style>
+        .project-container {
+            margin: 20px 0;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .text-blk {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .link-buttons {
+            display: flex; /* Aligns buttons side by side */
+            gap: 10px; /* Space between buttons */
+            margin-top: 20px; /* Space above the button group */
+        }
+
+        .github-btn {
+            display: inline-flex; /* Use inline-flex to align the icon and text */
+            align-items: center; /* Vertically center the icon and text */
+            justify-content: center; /* Center the icon and text horizontally */
+            gap: 10px; /* Add some space between the icon and the text */
+        }
+
+        .project-description {
+            margin-bottom: 20px;
+        }
+
+        .project-links a {
+            display: inline-block;
+            margin-right: 15px;
+            text-decoration: none;
+            color: #000; /* Change color to fit your design */
+            font-size: 1.3em;
+        }
+
+        .project-links i {
+            margin-right: 5px;
+        }
+
+        .project-banner {
+            height: 350px; /* Adjust the height as needed */
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px; /* Space between the banner and the title */
+        }
+    </style>
+
+</head>
+<body>
+    <div class="home-container">
+        <div class="topbar-container"></div>
+        
+        <!-- Project: Chrono-kit -->
+        <div class="project-description-card">
+            <div class="project-banner" style="background-image: url('./assets/chronokit_banner.png');">
+                <!-- You can include additional content here if you want -->
+            </div>
+            <!-- <div class="project-title"><b>Chrono-kit</b></div> -->
+            <p class="text-blk">Chrono-kit ODTU YZT üyeleri tarafından Python yazılım dili ile geliştirilmiş bir açık kaynak
+                "Zaman Serisi Analizi" kütüphanesidir.</p>
+                <p class="text-blk">Zaman serisi analizinde kullanılan popüler analiz ve modelleme metotlarını içeren
+                    Chrono-kit; yapay zeka metotları ve zaman serisi analizini birleştirerek bu alanda çalışmalar yürüten insanlar için
+                    kullanımı kolay ve efektif bir Python paketi olma hedefi ile geliştirilmeye devam etmektedir.</p>
+            <div class="project-links">
+                <a class="fa fa-github" href="https://github.com/odtuyzt/chrono-kit" target="_blank" class="btn github-btn">GitHub</a>
+                <a href="./chronokit/index.html" target="_blank" class="btn">Dokümantasyon</a>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-container"></div>
+    </div>
+</body>
+</html>

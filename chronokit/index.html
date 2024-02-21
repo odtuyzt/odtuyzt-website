@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | ODTÜ Yapay Zeka Topluluğu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="icon" href="./assets/favicon.png">
+
+    <style>
+        .section { display: none; }
+
+        body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+  
+    .container {
+      max-width: 800px; /* or any other max-width */
+      margin: auto; /* This centers the container */
+      padding: 20px;
+    }
+
+    .text-blk {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+    </style>
+
+    
+
+</head>
+<body>
+    <div class="topbar-container"></div>
+
+    <div class="documentation-container">
+        <nav class="sidebar">
+            <!-- Sidebar content similar to GitHub wiki -->
+            <div class="sidebar-links">
+                <h2>Modules</h2>
+                <ul>
+                    <li><a href="#exponential_smoothing">exponential_smoothing</a></li>
+                    <li><a href="#arima">arima</a></li>
+                    <li><a href="#decomposition">decomposition</a></li>
+                    <!-- Add more module links as needed -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <section id="main-content" class="section" style="display:block;">
+            <!-- Main content -->
+            <h1>Chrono-kit Docs</h1>
+            <p class="text-blk">!This page is still under progress</p>
+            <p><b>chrono-kit</b> is an open source python library for time series analysis and forecasting.</p>
+            <p>This project was started in 2023 by ODTU YZT.</p>
+            <a class="text-blk" href=https://github.com/odtuyzt/chrono-kit/tree/main/examples>Take a look at our examples</a><br>
+            </br>
+
+            <h2><b>Installation:</b></h2></br>
+            <h5 class="text-blk">chronokit requires:</h5>
+            </br>
+            <div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
+                <li>python >= 3.8.17</li>
+                <li>torch >= 1.13.1</li>
+                <li>numpy >= 1.24.0</li>
+                <li>pandas >= 1.4.0</li>
+                <li>scipy >= 1.10.1</li>
+                <li>matplotlib >= 3.2.1</li>
+            </div>
+            <br>
+            <pre><code>pip install chrono-kit</code></pre>
+            <pre><code>import chronokit</code></pre>
+
+            <!-- Add more content about your Python package here -->
+        </section>
+        <section id="exponential_smoothing" class="section">
+            <br>
+            <p class="text-blk">exponential_smoothing module contains state space models
+                based on Holt-Winters' Exponential Smoothing and ETS(Error-Trend-Seasonality) models
+            </p>
+            </br>
+            <h2 class="text-blk">exponential_smoothing.ExponentialSmoothing</h2>
+            <p class="text-blk">Exponential Smoothing Models for time series analysis and forecasting</p>
+            <p class="text-blk">Exponential Smoothing Models was developed with 
+                Hyndman, R. et al. [1] as a reference;</p>
+            <p class="text-blk"> [1] 'Hyndman, R. J., Koehler, A. B., Ord, J. K., & Snyder, R. D. (2008). 
+                Forecasting with exponential smoothing: The state space approach''</p>
+            </br>
+            <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+            <pre><code><b>class ExponentialSmoothing</b>:
+                def __init__(self, 
+                            data,&nbsp;
+                            trend=None,&nbsp;
+                            seasonal=None,&nbsp;
+                            seasonal_periods=None,&nbsp;
+                            damped=False,&nbsp;
+                            initialization_method='heuristic',&nbsp;
+                            **kwargs
+                ):
+            </code></pre>
+            
+            <a>ExponentialSmoothing</a>&nbsp;Models&nbsp;for&nbsp;<br>
+            univariate&nbsp;time&nbsp;series&nbsp;modeling&nbsp;and&nbsp;forecasting<br>
+            &nbsp;<br>
+            Arguments:<br>
+            &nbsp;<br>
+            *data&nbsp;(array_like):&nbsp;Univariate&nbsp;time&nbsp;series&nbsp;data<br>
+            *trend&nbsp;(Optional[str]):&nbsp;Trend&nbsp;component;&nbsp;One&nbsp;of&nbsp;[None,&nbsp;"add",&nbsp;"mul]<br>
+            *seasonal&nbsp;(Optional[str]):&nbsp;Seasonal&nbsp;component;&nbsp;One&nbsp;of&nbsp;[None,&nbsp;"add",&nbsp;"mul]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;if&nbsp;seasonal_periods&nbsp;is&nbsp;None<br>
+            *seasonal_periods&nbsp;(Optional[int]):&nbsp;Cyclic&nbsp;period&nbsp;of&nbsp;the<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;seasonal&nbsp;component;&nbsp;None&nbsp;if&nbsp;seasonal&nbsp;is&nbsp;None<br>
+            *damped&nbsp;(bool):&nbsp;Damp&nbsp;factor&nbsp;of&nbsp;the&nbsp;trend&nbsp;component;&nbsp;One&nbsp;of&nbsp;[True,&nbsp;False]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;if&nbsp;trend&nbsp;is&nbsp;None<br>
+            *initialization_method&nbsp;(Optional[str]):&nbsp;Initialization&nbsp;method&nbsp;to&nbsp;use<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;the&nbsp;model&nbsp;parameters;&nbsp;One&nbsp;of&nbsp;["heuristic",&nbsp;"simple",&nbsp;"mle"].&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;=&nbsp;'heuristic'.<br>
+            &nbsp;<br>
+            Keyword&nbsp;Arguments:<br>
+            &nbsp;<br>
+            **&nbsp;initial_level&nbsp;(float):&nbsp;Initial&nbsp;value&nbsp;for&nbsp;the&nbsp;level&nbsp;component;<br>
+            **&nbsp;initial_trend_factor&nbsp;(float):&nbsp;Initial&nbsp;value&nbsp;for&nbsp;the&nbsp;trend&nbsp;component;<br>
+            **&nbsp;initial_seasonal_factors&nbsp;(array_like):&nbsp;Initial&nbsp;values&nbsp;for&nbsp;seasonal&nbsp;components;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Must&nbsp;have&nbsp;length&nbsp;=&nbsp;seasonal_periods<br>
+            &nbsp;<br>
+            **&nbsp;alpha&nbsp;(float):&nbsp;Smoothing&nbsp;parameter&nbsp;for&nbsp;level&nbsp;component;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1)<br>
+            **&nbsp;beta&nbsp;(float):&nbsp;Smoothing&nbsp;parameter&nbsp;for&nbsp;trend&nbsp;component;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1)<br>
+            **&nbsp;phi&nbsp;(float):&nbsp;Damp&nbsp;factor&nbsp;for&nbsp;trend&nbsp;component;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1]<br>
+            **&nbsp;gamma&nbsp;(float):&nbsp;Smoothing&nbsp;parameter&nbsp;for&nbsp;seasonal&nbsp;component;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1)<br>
+            &nbsp;<br>
+            </br>
+            <h3 class="text-blk">Methods:</h3>
+            <li><dl><dt><a name="ExponentialSmoothing-fit"><strong>fit</strong></a>(self)</dt></li><dd><tt>Fit&nbsp;the&nbsp;model&nbsp;to&nbsp;the&nbsp;given&nbsp;data</tt></dd></dl></br>
+            <li><dl><dt><a name="ExponentialSmoothing-predict"><strong>predict</strong></a>(self, h, confidence=None)</dt></li><dd><tt>Predict&nbsp;the&nbsp;next&nbsp;h&nbsp;values&nbsp;with&nbsp;the&nbsp;model<br>
+            &nbsp;<br>
+            .<a>fit</a>()&nbsp;should&nbsp;be&nbsp;called&nbsp;before&nbsp;making&nbsp;predictions<br>
+            &nbsp;<br>
+            Arguments:<br>
+            &nbsp;<br>
+            *h&nbsp;(int):&nbsp;Forecast&nbsp;horizon,&nbsp;minimum&nbsp;=&nbsp;1<br>
+            *confidence&nbsp;(Optional[float]):&nbsp;Confidence&nbsp;bounds<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;predictions.&nbsp;Must&nbsp;take&nbsp;values&nbsp;in&nbsp;(0,1).<br>
+            &nbsp;<br>
+            Returns:<br>
+            &nbsp;<br>
+            *forecasts&nbsp;(array_like):&nbsp;Forecasted&nbsp;h&nbsp;values<br>
+            *bounds&nbsp;Optional(tuple):&nbsp;Upper&nbsp;and&nbsp;Lower<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;forecast&nbsp;bounds,&nbsp;returns&nbsp;only&nbsp;if&nbsp;confidence&nbsp;!=&nbsp;None</tt></dd></dl></br>
+            <li><dl><dt><a name="TraditionalTimeSeriesModel-evaluate"><strong>evaluate</strong></a>(self, val_data, metrics=['mae', 'rmse', 'mase'], criterions=['aic', 'bic', 'hqic'])</dt></li><dd><tt>Evaluate&nbsp;the&nbsp;performance&nbsp;of&nbsp;the&nbsp;fitted&nbsp;model<br>
+                with&nbsp;the&nbsp;given&nbsp;validation&nbsp;data<br>
+                &nbsp;<br>
+                2&nbsp;evaluation&nbsp;steps&nbsp;are&nbsp;performed;<br>
+                &nbsp;<br>
+                1)&nbsp;Evaluate&nbsp;model&nbsp;fit&nbsp;by&nbsp;selected&nbsp;information&nbsp;criterions<br>
+                2)&nbsp;Evaluate&nbsp;model&nbsp;predictions&nbsp;by&nbsp;selected&nbsp;metrics<br>
+                &nbsp;<br>
+                Plots&nbsp;model&nbsp;fit/predictions&nbsp;and&nbsp;returns&nbsp;metrics<br>
+                &nbsp;<br>
+                Arguments:<br>
+                &nbsp;<br>
+                *val_data&nbsp;(array_like):&nbsp;Data&nbsp;to&nbsp;perform&nbsp;evaluation&nbsp;on<br>
+                *metrics&nbsp;Optional(list):&nbsp;Regression&nbsp;metrics&nbsp;for&nbsp;evaluation<br>
+                *criterions&nbsp;Optional(list):&nbsp;Information&nbsp;criterions&nbsp;to<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;evaluate&nbsp;model&nbsp;fit<br>
+                &nbsp;<br>
+                Returns:<br>
+                &nbsp;<br>
+                *res&nbsp;(pandas.DataFrame):&nbsp;Numerical&nbsp;results&nbsp;of&nbsp;the&nbsp;evaluation</tt></dd></dl>
+
+            <h2 class="text-blk">exponential_smoothing.ETS</h2>
+            <p class="text-blk">ETS (Error-Trend-Seasonality) Models for time series analysis and forecasting</p>
+            <p class="text-blk">ETS Models was developed with Hyndman, R. et al. [1] as a reference;</p>
+            <p class="text-blk"> [1] 'Hyndman, R. J., Koehler, A. B., Ord, J. K., & Snyder, R. D. (2008). 
+                Forecasting with exponential smoothing: The state space approach'</p>
+            </br>
+            <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+            <pre><code><b>class ETS</b>:
+                def __init__(self, 
+                            data, 
+                            error_type='add', 
+                            trend=None, 
+                            seasonal=None, 
+                            seasonal_periods=None, 
+                            damped=False, 
+                            initialization_method='heuristic', 
+                            **kwargs
+                ):
+            </code></pre>
+            </strong></a></dt><dd><tt><a>ETS</a>&nbsp;(Error-Trend-Seasonality)&nbsp;Models&nbsp;for&nbsp;<br>
+                univariate&nbsp;time&nbsp;series&nbsp;modeling&nbsp;and&nbsp;forecasting<br>
+                &nbsp;<br>
+                Arguments:<br>
+                &nbsp;<br>
+                *error_type&nbsp;(Optional[str]):&nbsp;Error&nbsp;component;&nbsp;"add"&nbsp;or&nbsp;"mul"<br>
+                *data&nbsp;(array_like):&nbsp;Univariate&nbsp;time&nbsp;series&nbsp;data<br>
+                *trend&nbsp;(Optional[str]):&nbsp;Trend&nbsp;component;&nbsp;One&nbsp;of&nbsp;[None,&nbsp;"add",&nbsp;"mul]<br>
+                *seasonal&nbsp;(Optional[str]):&nbsp;Seasonal&nbsp;component;&nbsp;One&nbsp;of&nbsp;[None,&nbsp;"add",&nbsp;"mul]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;if&nbsp;seasonal_periods&nbsp;is&nbsp;None<br>
+                *seasonal_periods&nbsp;(Optional[int]):&nbsp;Cyclic&nbsp;period&nbsp;of&nbsp;the<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;seasonal&nbsp;component;&nbsp;None&nbsp;if&nbsp;seasonal&nbsp;is&nbsp;None<br>
+                *damped&nbsp;(bool):&nbsp;Damp&nbsp;factor&nbsp;of&nbsp;the&nbsp;trend&nbsp;component;&nbsp;One&nbsp;of&nbsp;[True,&nbsp;False]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;if&nbsp;trend&nbsp;is&nbsp;None<br>
+                *initialization_method&nbsp;(Optional[str]):&nbsp;Initialization&nbsp;method&nbsp;to&nbsp;use<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;the&nbsp;model&nbsp;parameters;&nbsp;One&nbsp;of&nbsp;["heuristic",&nbsp;"simple",&nbsp;"mle"].&nbsp;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;=&nbsp;'heuristic'.<br>
+                &nbsp;<br>
+                Keyword&nbsp;Arguments:<br>
+                &nbsp;<br>
+                **&nbsp;initial_level&nbsp;(float):&nbsp;Initial&nbsp;value&nbsp;for&nbsp;the&nbsp;level&nbsp;component;<br>
+                **&nbsp;initial_trend_factor&nbsp;(float):&nbsp;Initial&nbsp;value&nbsp;for&nbsp;the&nbsp;trend&nbsp;component;<br>
+                **&nbsp;initial_seasonal_factors&nbsp;(array_like):&nbsp;Initial&nbsp;values&nbsp;for&nbsp;seasonal&nbsp;components;&nbsp;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Must&nbsp;have&nbsp;length&nbsp;=&nbsp;seasonal_periods<br>
+                &nbsp;<br>
+                **&nbsp;alpha&nbsp;(float):&nbsp;Smoothing&nbsp;parameter&nbsp;for&nbsp;level&nbsp;component;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1)<br>
+                **&nbsp;beta&nbsp;(float):&nbsp;Smoothing&nbsp;parameter&nbsp;for&nbsp;trend&nbsp;component;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1)<br>
+                **&nbsp;phi&nbsp;(float):&nbsp;Damp&nbsp;factor&nbsp;for&nbsp;trend&nbsp;component;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1]<br>
+                **&nbsp;gamma&nbsp;(float):&nbsp;Smoothing&nbsp;parameter&nbsp;for&nbsp;seasonal&nbsp;component;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;takes&nbsp;values&nbsp;in&nbsp;(0,1)<br>
+                &nbsp;<br>
+
+                <h3 class="text-blk">Methods:</h3>
+                <li><dl><dt><a name="ExponentialSmoothing-fit"><strong>fit</strong></a>(self)</dt></li><dd><tt>Fit&nbsp;the&nbsp;model&nbsp;to&nbsp;the&nbsp;given&nbsp;data</tt></dd></dl></br>
+                <li><dl><dt><a name="ExponentialSmoothing-predict"><strong>predict</strong></a>(self, h, confidence=None)</dt></li><dd><tt>Predict&nbsp;the&nbsp;next&nbsp;h&nbsp;values&nbsp;with&nbsp;the&nbsp;model<br>
+                &nbsp;<br>
+                .<a>fit</a>()&nbsp;should&nbsp;be&nbsp;called&nbsp;before&nbsp;making&nbsp;predictions<br>
+                &nbsp;<br>
+                Arguments:<br>
+                &nbsp;<br>
+                *h&nbsp;(int):&nbsp;Forecast&nbsp;horizon,&nbsp;minimum&nbsp;=&nbsp;1<br>
+                *confidence&nbsp;(Optional[float]):&nbsp;Confidence&nbsp;bounds<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;predictions.&nbsp;Must&nbsp;take&nbsp;values&nbsp;in&nbsp;(0,1).<br>
+                &nbsp;<br>
+                Returns:<br>
+                &nbsp;<br>
+                *forecasts&nbsp;(array_like):&nbsp;Forecasted&nbsp;h&nbsp;values<br>
+                *bounds&nbsp;Optional(tuple):&nbsp;Upper&nbsp;and&nbsp;Lower<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;forecast&nbsp;bounds,&nbsp;returns&nbsp;only&nbsp;if&nbsp;confidence&nbsp;!=&nbsp;None</tt></dd></dl></br>
+                <li><dl><dt><a name="TraditionalTimeSeriesModel-evaluate"><strong>evaluate</strong></a>(self, val_data, metrics=['mae', 'rmse', 'mase'], criterions=['aic', 'bic', 'hqic'])</dt></li><dd><tt>Evaluate&nbsp;the&nbsp;performance&nbsp;of&nbsp;the&nbsp;fitted&nbsp;model<br>
+                    with&nbsp;the&nbsp;given&nbsp;validation&nbsp;data<br>
+                    &nbsp;<br>
+                    2&nbsp;evaluation&nbsp;steps&nbsp;are&nbsp;performed;<br>
+                    &nbsp;<br>
+                    1)&nbsp;Evaluate&nbsp;model&nbsp;fit&nbsp;by&nbsp;selected&nbsp;information&nbsp;criterions<br>
+                    2)&nbsp;Evaluate&nbsp;model&nbsp;predictions&nbsp;by&nbsp;selected&nbsp;metrics<br>
+                    &nbsp;<br>
+                    Plots&nbsp;model&nbsp;fit/predictions&nbsp;and&nbsp;returns&nbsp;metrics<br>
+                    &nbsp;<br>
+                    Arguments:<br>
+                    &nbsp;<br>
+                    *val_data&nbsp;(array_like):&nbsp;Data&nbsp;to&nbsp;perform&nbsp;evaluation&nbsp;on<br>
+                    *metrics&nbsp;Optional(list):&nbsp;Regression&nbsp;metrics&nbsp;for&nbsp;evaluation<br>
+                    *criterions&nbsp;Optional(list):&nbsp;Information&nbsp;criterions&nbsp;to<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;evaluate&nbsp;model&nbsp;fit<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;<br>
+                    *res&nbsp;(pandas.DataFrame):&nbsp;Numerical&nbsp;results&nbsp;of&nbsp;the&nbsp;evaluation</tt></dd></dl>
+        </section>
+
+        <section id="arima" class="section">
+            <h2 class="text-blk">chronokit.arima</h2>
+            <p class="text-blk">arima module contains time series models based 
+                on ARIMA Processes</p>
+            <br><h2 class="text-blk">arima.SARIMA</h2>
+            <p class="text-blk">SARIMA Models for time series analysis and forecasting</p>
+            <p class="text-blk">SARIMA Models was developed by the below book as a reference;</p>
+            <p class="text-blk"> Box, G. E. P., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). 
+                Time series analysis: Forecasting and control (5th ed).'</p>   
+            <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+            </br>
+            <pre><code>class <b>SARIMA</b>:
+                def __init__(self, 
+                            data, 
+                            order = (0,0,0), 
+                            seasonal_order=(0,0,0),
+                            seasonal_periods=None,
+                            **kwargs
+                ):
+            </code></pre>
+            <dd><tt>Seasonal&nbsp;AutoRegressive-Moving&nbsp;Average&nbsp;Integrated&nbsp;Model&nbsp;(<a href="#SARIMA">SARIMA</a>)<br>
+            for&nbsp;univarite&nbsp;time&nbsp;series&nbsp;modeling&nbsp;and&nbsp;forecasting.<br>
+            &nbsp;<br>
+            Arguments:<br>
+            &nbsp;<br>
+            *data&nbsp;(array_like):&nbsp;Univariate&nbsp;time&nbsp;series&nbsp;data<br>
+            *order&nbsp;(Optional[tuple]):&nbsp;Order&nbsp;of&nbsp;the&nbsp;ARIMA&nbsp;process&nbsp;(p,d,q)<br>
+            *seasonal_order&nbsp;(Optional[tuple]):&nbsp;Order&nbsp;of&nbsp;the&nbsp;seasonal&nbsp;process&nbsp;(P,D,Q)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;(0,0,0)&nbsp;if&nbsp;seasonal_periods&nbsp;is&nbsp;None<br>
+            *seasonal_periods&nbsp;(Optional[int]):&nbsp;Cyclic&nbsp;period&nbsp;of&nbsp;the<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;seasonal&nbsp;component;&nbsp;None&nbsp;if&nbsp;seasonal_order&nbsp;=&nbsp;(0,0,0)<br>
+            &nbsp;<br>
+            Keyword&nbsp;Arguments:<br>
+            &nbsp;<br>
+            **&nbsp;phi&nbsp;(array_like):&nbsp;Parameters&nbsp;for&nbsp;AR&nbsp;component;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;must&nbsp;be&nbsp;of&nbsp;length&nbsp;p<br>
+            **&nbsp;theta&nbsp;(array_like):&nbsp;Parameters&nbsp;for&nbsp;MA&nbsp;component;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;must&nbsp;be&nbsp;of&nbsp;length&nbsp;q<br>
+            **&nbsp;seasonal_phi&nbsp;(array_like):&nbsp;Parameters&nbsp;for&nbsp;Seasonal&nbsp;AR&nbsp;component;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;must&nbsp;be&nbsp;of&nbsp;length&nbsp;P<br>
+            **&nbsp;seasonal_theta&nbsp;(array_like):&nbsp;Parameters&nbsp;for&nbsp;Seasonal&nbsp;MA&nbsp;component;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;must&nbsp;be&nbsp;of&nbsp;length&nbsp;Q<br>
+            &nbsp;<br>
+            
+            <h3 class="text-blk">Methods:</h3>
+                <li><dl><dt><a name="ExponentialSmoothing-fit"><strong>fit</strong></a>(self)</dt></li><dd><tt>Fit&nbsp;the&nbsp;model&nbsp;to&nbsp;the&nbsp;given&nbsp;data</tt></dd></dl></br>
+                <li><dl><dt><a name="ExponentialSmoothing-predict"><strong>predict</strong></a>(self, h, confidence=None)</dt></li><dd><tt>Predict&nbsp;the&nbsp;next&nbsp;h&nbsp;values&nbsp;with&nbsp;the&nbsp;model<br>
+                &nbsp;<br>
+                .<a>fit</a>()&nbsp;should&nbsp;be&nbsp;called&nbsp;before&nbsp;making&nbsp;predictions<br>
+                &nbsp;<br>
+                Arguments:<br>
+                &nbsp;<br>
+                *h&nbsp;(int):&nbsp;Forecast&nbsp;horizon,&nbsp;minimum&nbsp;=&nbsp;1<br>
+                *confidence&nbsp;(Optional[float]):&nbsp;Confidence&nbsp;bounds<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;predictions.&nbsp;Must&nbsp;take&nbsp;values&nbsp;in&nbsp;(0,1).<br>
+                &nbsp;<br>
+                Returns:<br>
+                &nbsp;<br>
+                *forecasts&nbsp;(array_like):&nbsp;Forecasted&nbsp;h&nbsp;values<br>
+                *bounds&nbsp;Optional(tuple):&nbsp;Upper&nbsp;and&nbsp;Lower<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;forecast&nbsp;bounds,&nbsp;returns&nbsp;only&nbsp;if&nbsp;confidence&nbsp;!=&nbsp;None</tt></dd></dl></br>
+                <li><dl><dt><a name="TraditionalTimeSeriesModel-evaluate"><strong>evaluate</strong></a>(self, val_data, metrics=['mae', 'rmse', 'mase'], criterions=['aic', 'bic', 'hqic'])</dt></li><dd><tt>Evaluate&nbsp;the&nbsp;performance&nbsp;of&nbsp;the&nbsp;fitted&nbsp;model<br>
+                    with&nbsp;the&nbsp;given&nbsp;validation&nbsp;data<br>
+                    &nbsp;<br>
+                    2&nbsp;evaluation&nbsp;steps&nbsp;are&nbsp;performed;<br>
+                    &nbsp;<br>
+                    1)&nbsp;Evaluate&nbsp;model&nbsp;fit&nbsp;by&nbsp;selected&nbsp;information&nbsp;criterions<br>
+                    2)&nbsp;Evaluate&nbsp;model&nbsp;predictions&nbsp;by&nbsp;selected&nbsp;metrics<br>
+                    &nbsp;<br>
+                    Plots&nbsp;model&nbsp;fit/predictions&nbsp;and&nbsp;returns&nbsp;metrics<br>
+                    &nbsp;<br>
+                    Arguments:<br>
+                    &nbsp;<br>
+                    *val_data&nbsp;(array_like):&nbsp;Data&nbsp;to&nbsp;perform&nbsp;evaluation&nbsp;on<br>
+                    *metrics&nbsp;Optional(list):&nbsp;Regression&nbsp;metrics&nbsp;for&nbsp;evaluation<br>
+                    *criterions&nbsp;Optional(list):&nbsp;Information&nbsp;criterions&nbsp;to<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;evaluate&nbsp;model&nbsp;fit<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;<br>
+                    *res&nbsp;(pandas.DataFrame):&nbsp;Numerical&nbsp;results&nbsp;of&nbsp;the&nbsp;evaluation</tt></dd></dl>
+        </section>
+    </div>
+    <div class="footer-container"></div>
+
+    <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        showSectionBasedOnHash();
+    });
+
+    window.addEventListener('hashchange', (event) => {
+        showSectionBasedOnHash();
+    });
+
+    function showSectionBasedOnHash() {
+        const hash = window.location.hash;
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        if (hash && document.querySelector(hash)) {
+        // Show the section that matches the hash
+        document.querySelector(hash).style.display = 'block';
+        } else {
+        // If there's no hash, show the main content section
+        document.querySelector('#main-content').style.display = 'block';
+        }
+    }
+    </script>
+</body>
+</html>
